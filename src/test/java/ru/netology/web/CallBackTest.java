@@ -12,24 +12,20 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class CallBackTest {
     private static WebDriver driver;
-   {
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("--disable-dev-shm-usage");
-        options.addArguments("--no-sandbox");
-        options.addArguments("--headless");
-        driver = new ChromeDriver(options);
-    }
-
     @BeforeAll
     static void setupAll() {
         WebDriverManager.chromedriver().setup();
-        //System.setProperty("webdriver.chrome.driver", "driver/chromedriver.exe");
     }
 
     @BeforeEach
-    void setup() {
-        driver = new ChromeDriver();
+        public void setUp() {
+            ChromeOptions options = new ChromeOptions();
+            options.addArguments("--disable-dev-shm-usage");
+            options.addArguments("--no-sandbox");
+            options.addArguments("--headless");
+            driver = new ChromeDriver(options);
     }
+
 
     @AfterEach
     void tearsDown() {
